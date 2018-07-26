@@ -8,12 +8,19 @@
 
 import UIKit
 
-class PopVC: UIViewController {
+class PopVC: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var popImageView: UIImageView!
+    
+    var passedImage: UIImage!
+    
+    func initData(forImage image: UIImage) {
+        self.passedImage = image
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        popImageView.image = passedImage
     }
 
     override func didReceiveMemoryWarning() {
