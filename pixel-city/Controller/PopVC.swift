@@ -8,9 +8,13 @@
 
 import UIKit
 
-class PopVC: UIViewController, UIGestureRecognizerDelegate {
+class PopVC: UIViewController {
 
+    // MARK: IBOutlets
+    
     @IBOutlet weak var popImageView: UIImageView!
+    
+    // MARK: Initializers
     
     var passedImage: UIImage!
     
@@ -18,12 +22,18 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
         self.passedImage = image
     }
     
+    // MARK: View LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         popImageView.image = passedImage
         addDoubleTap()
     }
-    
+}
+
+// MARK: UIGestureRecognizerDelegate
+
+extension PopVC: UIGestureRecognizerDelegate {
     func addDoubleTap() {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         doubleTap.numberOfTapsRequired = 2
@@ -34,5 +44,4 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func screenTapped() {
         dismiss(animated: true, completion: nil)
     }
-
 }
